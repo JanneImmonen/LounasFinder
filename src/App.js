@@ -1,15 +1,13 @@
 // src/App.js
-import React, { useState, useEffect, createContext } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
-import { AuthProvider } from './components/AuthContext'; // Import the AuthProvider
+import { AuthProvider } from './components/AuthContext'; // Make sure the path is correct
 
 const App = () => {
   return (
@@ -28,6 +26,6 @@ const App = () => {
       </Router>
     </AuthProvider>
   );
-}
+};
 
 export default App;

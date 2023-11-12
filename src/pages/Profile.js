@@ -1,18 +1,17 @@
 // src/pages/Profile.js
 import React, { useContext, useState, useEffect } from 'react';
-import { AuthContext } from '../App';
+import { AuthContext } from '../components/AuthContext'; // Corrected import statement
 import { getAuth, updateProfile } from "firebase/auth";
 
 const Profile = () => {
   const { user, setUser } = useContext(AuthContext);
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     if (user) {
       setName(user.displayName || '');
-      setEmail(user.email || '');
+      // setEmail(user.email || ''); Removed as it's not used
     }
   }, [user]);
 
