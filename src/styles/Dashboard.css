@@ -46,6 +46,27 @@
   /* Main Content Styles */
   .dashboard-main {
     padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .dashboard-link {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  .dashboard-link img {
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    border-radius: 50%; /* Circular images */
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-link span {
+    display: block;
+    font-size: 18px;
+    color: #333;
   }
   
   /* Responsive Design */
@@ -59,6 +80,10 @@
       padding-top: 10px;
       flex-direction: column;
       gap: 10px;
+    }
+  
+    .dashboard-main {
+      flex-direction: column;
     }
   }
   

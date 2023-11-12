@@ -8,6 +8,7 @@ const Navigation = () => {
 
     return (
         <nav className="dashboard-nav">
+            {location.pathname !== '/dashboard' && <Link to="/dashboard">Dashboard</Link>}
             {location.pathname !== '/map' && <Link to="/map">Map</Link>}
             {location.pathname !== '/recipes' && <Link to="/recipes">Recipes</Link>}
             {location.pathname !== '/signout' && <Link to="/signout">Sign Out</Link>}

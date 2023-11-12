@@ -22,9 +22,10 @@ const SignOut = () => {
 
   return (
     <div className="signout-container">
-      <h1>Sign Out</h1>
-      <p>Are you sure you want to sign out?</p>
-      <button onClick={handleSignOut} className="signout-button">Sign Out</button>
+      <h1>Goodbye!</h1>
+      <p>We're sad to see you go. Are you sure you want to sign out?</p>
+      <button onClick={handleSignOut} className="signout-button">Yes, Sign Out</button>
+      <button onClick={() => navigate(-1)} className="cancel-button">No, Take Me Back</button>
     </div>
   );
 };

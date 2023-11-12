@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <p>© 2023 LounasFinder. All rights reserved.</p>
-        <p>Follow us on social media</p>
+        <p>Janne Immonen</p>
         {/* Add social media icons/links here */}
       </div>
     </footer>

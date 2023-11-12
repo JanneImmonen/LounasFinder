@@ -73,6 +73,7 @@ const RecipesPage = () => {
         <div className="page-container">
             <Navigation />
             <h1 className="page-title">Recipes Page</h1>
+            <p>Discover a world of flavors with our diverse collection of recipes. Choose a region or category to find your next culinary adventure!</p>
             <select className="select-dropdown" onChange={handleAreaFilterChange} value={filter}>
                 <option value="">Select Area</option>
                 <option value="American">American</option>
@@ -108,7 +109,7 @@ const RecipesPage = () => {
                     </option>
                 ))}
             </select>
-            <div>
+            <div className="recipes-grid">
                 {recipes && recipes.map(recipe => (
                     <div key={recipe.idMeal}>
                         <h3>{recipe.strMeal}</h3>
@@ -117,6 +118,7 @@ const RecipesPage = () => {
                     </div>
                 ))}
             </div>
+            <img src="/recipes.png" alt="recipes" className="page-image" />
         </div>
     );
 };
