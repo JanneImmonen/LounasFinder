@@ -21,3 +21,36 @@
 .page-link:hover {
     text-decoration: underline;
 }
+
+/* Style for the select dropdown */
+.select-dropdown {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #333;
+    -webkit-appearance: none; /* Removes default styling for select in iOS */
+    -moz-appearance: none; /* Removes default styling for select in Firefox */
+    appearance: none; /* Removes default styling for select */
+}
+
+/* Style for the select dropdown arrow */
+.select-dropdown::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333;
+}
+
+/* Style for the select dropdown on focus */
+.select-dropdown:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}

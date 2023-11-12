@@ -1,0 +1,15 @@
+.footer {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 20px 0;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  }
+  
+  .footer-content p {
+    margin: 5px 0;
+    color: #333;
+    font-size: 0.9rem;
+  }
+  
