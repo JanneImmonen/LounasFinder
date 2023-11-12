@@ -8,14 +8,13 @@ import { GoogleAuthProvider } from 'firebase/auth';
 export const googleProvider = new GoogleAuthProvider();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB8q28n81eu1GREoNoMBXpasFiPj_0ELyg",
-  authDomain: "lounasfinder.firebaseapp.com",
-  databaseURL: "https://lounasfinder-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "lounasfinder",
-  storageBucket: "lounasfinder.appspot.com",
-  messagingSenderId: "1042450201255",
-  appId: "1:1042450201255:web:624ec1a93c8bd91282f982",
-  measurementId: "G-N9YG758LKM"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

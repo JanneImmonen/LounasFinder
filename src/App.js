@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'; // Import useContext
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -6,11 +6,11 @@ import Profile from './pages/Profile';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
-import { AuthProvider, AuthContext } from './components/AuthContext'; // Import both AuthProvider and AuthContext
+import MapPage from './pages/MapPage'; // Ensure this is the correct path
+import RecipesPage from './pages/RecipesPage'; // Ensure this is the correct path
+import { AuthProvider, AuthContext } from './components/AuthContext';
 
 const App = () => {
-  // useContext hook must be used inside the component that is wrapped with AuthProvider
-  // Therefore, we move the useContext hook inside the return statement where AuthProvider is used
   return (
     <AuthProvider>
       <Router>
@@ -29,6 +29,8 @@ const App = () => {
                 <Profile />
               </ProtectedRoute>
             } />
+            <Route path="/map" element={<MapPage />} />
+            <Route path="/recipes" element={<RecipesPage />} />
             <Route path="/signout" element={<SignOut />} />
           </Routes>
         </div>
@@ -37,9 +39,8 @@ const App = () => {
   );
 };
 
-// A helper component to protect routes
 const ProtectedRoute = ({ children }) => {
-  const { currentUser } = useContext(AuthContext); // Now AuthContext is correctly in scope
+  const { currentUser } = useContext(AuthContext);
 
   if (!currentUser) {
     return <Navigate to="/signin" />;

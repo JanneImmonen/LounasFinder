@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import GoogleButton from 'react-google-button';
-import { getAuth, signInWithPopup, GoogleAuthProvider, signInAnonymously } from 'firebase/auth';
+import { getAuth, signInWithPopup, signInAnonymously } from 'firebase/auth';
 import { googleProvider } from '../firebase/firebase';
 import { AuthContext } from '../components/AuthContext';
 import '../styles/Home.css';

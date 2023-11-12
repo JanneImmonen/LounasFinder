@@ -14,13 +14,14 @@ const SignUp = () => {
     event.preventDefault();
     const auth = getAuth();
     try {
+      // Add client-side validation here if needed
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       // Set the user in the context
       setCurrentUser(userCredential.user);
-      navigate('/dashboard');
+      navigate('/dashboard'); // Ensure this route is correctly configured
     } catch (error) {
       console.error(error.message);
-      // Handle errors here
+      // Handle specific errors here (e.g., show a message to the user)
     }
   };
 
@@ -41,6 +42,7 @@ const SignUp = () => {
         required
       />
       <button type="submit">Sign Up</button>
+      {/* Consider adding user feedback elements here */}
     </form>
   );
 };
