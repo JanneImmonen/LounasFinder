@@ -18,6 +18,7 @@ Generating Firebase configuration keys.
 Environment Variables
 Guide on creating a .env.local file.
 Description of required environment variables:
+REACT_APP_GOOGLE_MAPS_API_KEY
 REACT_APP_FIREBASE_API_KEY
 REACT_APP_FIREBASE_AUTH_DOMAIN
 REACT_APP_FIREBASE_PROJECT_ID

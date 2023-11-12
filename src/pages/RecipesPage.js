@@ -1,14 +1,55 @@
 // src/pages/RecipesPage.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Navigation from '../components/Navigation';
 import '../styles/PageStyles.css';
 
 const RecipesPage = () => {
     const [recipes, setRecipes] = useState([]);
-    const [areas, setAreas] = useState([]);
     const [categories, setCategories] = useState([]);
     const [filter, setFilter] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('');
+    const [setIsLoading] = useState(false);
+    const [setError] = useState(null);
+
+    const fetchAreas = async () => {
+        // Implement fetch logic for areas
+        // Example:
+        // const response = await fetch('URL_FOR_AREAS');
+        // const data = await response.json();
+        // setAreas(data.areas);
+    };
+
+    const fetchCategories = async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+            const response = await fetch('https://www.themealdb.com/api/json/v1/1/categories.php');
+            if (!response.ok) throw new Error('Something went wrong!');
+            const data = await response.json();
+            setCategories(data.categories);
+        } catch (err) {
+            setError(err.message);
+        }
+        setIsLoading(false);
+    };
+
+    const fetchRecipes = useCallback(async () => {
+        setIsLoading(true);
+        setError(null);
+        try {
+            let url = `https://www.themealdb.com/api/json/v1/1/filter.php?`;
+            if (filter) url += `a=${filter}`;
+            if (categoryFilter) url += `c=${categoryFilter}`;
+
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('Something went wrong!');
+            const data = await response.json();
+            setRecipes(data.meals);
+        } catch (err) {
+            setError(err.message);
+        }
+        setIsLoading(false);
+    }, [filter, categoryFilter]);
 
     useEffect(() => {
         fetchAreas();
@@ -19,47 +60,7 @@ const RecipesPage = () => {
         if (filter || categoryFilter) {
             fetchRecipes();
         }
-    }, [filter, categoryFilter]);
-
-    const fetchAreas = async () => {
-        // Fetch areas logic here
-    };
-
-    const fetchCategories = async () => {
-        const url = `https://www.themealdb.com/api/json/v1/1/categories.php`;
-
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            setCategories(data.categories);
-        } catch (error) {
-            console.error("Error fetching categories: ", error);
-        }
-    };
-
-    const fetchRecipes = async () => {
-        let url = `https://www.themealdb.com/api/json/v1/1/filter.php?`;
-        if (filter) {
-            url += `a=${filter}`;
-        }
-        if (categoryFilter) {
-            url += `c=${categoryFilter}`;
-        }
-
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            setRecipes(data.meals);
-        } catch (error) {
-            console.error("Error fetching data: ", error);
-        }
-    };
+    }, [filter, categoryFilter, fetchRecipes]);
 
     const handleAreaFilterChange = (e) => {
         setFilter(e.target.value);
@@ -74,8 +75,11 @@ const RecipesPage = () => {
             <Navigation />
             <h1 className="page-title">Recipes Page</h1>
             <p>Discover a world of flavors with our diverse collection of recipes. Choose a region or category to find your next culinary adventure!</p>
+            
+            {/* Area Filter Dropdown */}
             <select className="select-dropdown" onChange={handleAreaFilterChange} value={filter}>
                 <option value="">Select Area</option>
+                {/* Add options for each area */}
                 <option value="American">American</option>
                 <option value="British">British</option>
                 <option value="Canadian">Canadian</option>
@@ -101,6 +105,8 @@ const RecipesPage = () => {
                 <option value="Unknown">Unknown</option>
                 <option value="Vietnamese">Vietnamese</option>
             </select>
+    
+            {/* Category Filter Dropdown */}
             <select className="select-dropdown" onChange={handleCategoryFilterChange} value={categoryFilter}>
                 <option value="">Select Category</option>
                 {categories.map(category => (
@@ -109,15 +115,18 @@ const RecipesPage = () => {
                     </option>
                 ))}
             </select>
+    
+            {/* Recipes Grid */}
             <div className="recipes-grid">
                 {recipes && recipes.map(recipe => (
-                    <div key={recipe.idMeal}>
+                    <div key={recipe.idMeal} className="recipe-card">
                         <h3>{recipe.strMeal}</h3>
                         <img src={recipe.strMealThumb} alt={recipe.strMeal} />
-                        {/* More recipe details */}
+                        {/* You can add more recipe details here */}
                     </div>
                 ))}
             </div>
+    
             <img src="/recipes.png" alt="recipes" className="page-image" />
         </div>
     );
