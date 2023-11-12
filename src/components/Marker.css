@@ -1,0 +1,27 @@
+/* src/components/Marker.css */
+.marker {
+    background-color: #ff4757;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    position: 'absolute';
+    transform: 'translate(-50%, -50%)';
+  }
+  
+  .marker::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Adjust this value to fit the size of your marker */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0; /* Creates a triangle */
+    border-style: solid;
+    border-color: #ff4757 transparent;
+    display: block;
+    width: 0;
+  }
+  

@@ -1,38 +1,64 @@
+/* App.css */
 .App {
   text-align: center;
 }
 
-.App-logo {
+/* Remove App-logo as it's specific to the React logo in the default app */
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
+/* We won't need logo spinning keyframes, so let's comment this out
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
+/* Update the header to be less specific to the default React app */
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 1rem;
   color: white;
 }
 
+/* Styling for navigation links */
 .App-link {
   color: #61dafb;
+  margin: 0 1rem;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
+/* Additional global styles can go here */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* Add your additional styles below */
+.button {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  text-transform: uppercase;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* You might not need these logo spin keyframes */
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
