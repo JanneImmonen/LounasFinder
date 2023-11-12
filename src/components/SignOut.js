@@ -1,18 +1,26 @@
 // src/components/SignOut.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../firebase/firebase';
+import { getAuth, signOut } from 'firebase/auth';
+import { AuthContext } from '../AuthContext'; // Make sure the path to AuthContext is correct
 
 const SignOut = () => {
   const navigate = useNavigate();
+  const { setCurrentUser } = useContext(AuthContext);
 
-  const signOut = () => {
-    auth.signOut();
-    navigate('/');
+  const handleSignOut = async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+      setCurrentUser(null); // Clear the user in the context
+      navigate('/');
+    } catch (error) {
+      console.error('Sign out error:', error);
+    }
   };
 
   return (
-    <button onClick={signOut}>Sign Out</button>
+    <button onClick={handleSignOut}>Sign Out</button>
   );
 };
 

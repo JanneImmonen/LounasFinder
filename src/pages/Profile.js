@@ -1,23 +1,40 @@
 // src/pages/Profile.js
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../App';
-import { updateProfile } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 
 const Profile = () => {
-  const { user } = useContext(AuthContext);
-  const [name, setName] = useState(user.displayName || '');
-  const [email, setEmail] = useState(user.email || '');
+  const { user, setUser } = useContext(AuthContext);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      setName(user.displayName || '');
+      setEmail(user.email || '');
+    }
+  }, [user]);
 
   const handleUpdateProfile = async (event) => {
     event.preventDefault();
+    const auth = getAuth();
+    if (!user) {
+      setMessage('No user logged in.');
+      return;
+    }
     try {
-      await updateProfile(user, { displayName: name });
+      await updateProfile(auth.currentUser, { displayName: name });
       setMessage('Profile updated successfully.');
+      setUser(auth.currentUser); // Update the user in the context with new data
     } catch (error) {
-      setMessage('Failed to update profile.');
+      setMessage('Failed to update profile: ' + error.message);
     }
   };
+
+  if (!user) {
+    return <div>Please sign in to view this page.</div>;
+  }
 
   return (
     <div>
@@ -29,11 +46,7 @@ const Profile = () => {
           onChange={(e) => setName(e.target.value)}
           placeholder="Name"
         />
-        <input
-          type="email"
-          value={email} // This field is read-only as email update would need verification
-          readOnly
-        />
+        {/* Email field removed for simplicity - changing email is a more complex operation */}
         <button type="submit">Update Profile</button>
       </form>
       {message && <p>{message}</p>}

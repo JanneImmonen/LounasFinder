@@ -1,7 +1,7 @@
 // src/pages/Dashboard.js
 import React, { useState, useEffect } from 'react';
 import Map from '../components/Map';
-import { getMarkers } from '../utils/markerService'; // You would create this service
+import { getMarkers } from '../utils/markerService'; // Ensure this service is properly implemented
 
 const Dashboard = () => {
   const [markers, setMarkers] = useState([]);
@@ -25,6 +25,7 @@ const Dashboard = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+  if (markers.length === 0) return <div>No markers to display.</div>;
 
   return (
     <div>

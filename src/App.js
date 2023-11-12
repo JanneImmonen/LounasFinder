@@ -1,7 +1,7 @@
 // src/App.js
 import React, { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { auth } from './firebase/firebase';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -9,35 +9,24 @@ import Profile from './pages/Profile';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
+import { AuthProvider } from './components/AuthContext'; // Import the AuthProvider
 
-export const AuthContext = createContext(null);
-
-function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(currentUser => {
-      setUser(currentUser);
-    });
-
-    return unsubscribe;
-  }, []);
-
+const App = () => {
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthProvider>
       <Router>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/signin" element={user ? <Navigate replace to="/dashboard" /> : <SignIn />} />
-            <Route path="/signup" element={user ? <Navigate replace to="/dashboard" /> : <SignUp />} />
-            <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate replace to="/signin" />} />
-            <Route path="/profile" element={user ? <Profile /> : <Navigate replace to="/signin" />} />
-            <Route path="/signout" element={user ? <SignOut /> : <Navigate replace to="/signin" />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/signout" element={<SignOut />} />
           </Routes>
         </div>
       </Router>
-    </AuthContext.Provider>
+    </AuthProvider>
   );
 }
 
