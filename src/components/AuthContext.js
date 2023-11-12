@@ -10,15 +10,13 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Use the imported auth instance instead of calling getAuth()
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
       setLoading(false);
     });
 
-    // Clean up the listener when the component unmounts
     return unsubscribe;
-  }, []); // The empty array ensures this effect runs only once after initial render
+  }, []);
 
   if (loading) {
     return <p>Loading...</p>;

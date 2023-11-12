@@ -1,5 +1,5 @@
 // src/pages/Profile.js
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../components/AuthContext';
 import { getAuth, updateProfile } from 'firebase/auth';
 import '../styles/Profile.css'; // Import your CSS file for styling
@@ -21,7 +21,7 @@ const Profile = () => {
     try {
       await updateProfile(auth.currentUser, { displayName: name });
       setMessage('Profile updated successfully.');
-      setUser(auth.currentUser); // Update the user in the context with new data
+      setUser(auth.currentUser);
     } catch (error) {
       setMessage(`Failed to update profile: ${error.message}`);
     } finally {

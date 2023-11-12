@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
@@ -6,8 +7,8 @@ import Profile from './pages/Profile';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import SignOut from './components/SignOut';
-import MapPage from './pages/MapPage'; // Ensure this is the correct path
-import RecipesPage from './pages/RecipesPage'; // Ensure this is the correct path
+import MapPage from './pages/MapPage';
+import RecipesPage from './pages/RecipesPage';
 import { AuthProvider, AuthContext } from './components/AuthContext';
 
 const App = () => {
