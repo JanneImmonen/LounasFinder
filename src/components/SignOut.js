@@ -2,7 +2,8 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
-import { AuthContext } from './AuthContext'; // Path corrected
+import { AuthContext } from './AuthContext';
+import '../styles/SignOut.css'; // Import the CSS file for styling
 
 const SignOut = () => {
   const navigate = useNavigate();
@@ -20,7 +21,11 @@ const SignOut = () => {
   };
 
   return (
-    <button onClick={handleSignOut}>Sign Out</button>
+    <div className="signout-container">
+      <h1>Sign Out</h1>
+      <p>Are you sure you want to sign out?</p>
+      <button onClick={handleSignOut} className="signout-button">Sign Out</button>
+    </div>
   );
 };
 

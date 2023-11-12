@@ -1,0 +1,23 @@
+/* src/styles/PageStyles.css */
+.page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.page-link {
+    font-size: 1.2rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.page-link:hover {
+    text-decoration: underline;
+}

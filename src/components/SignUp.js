@@ -2,7 +2,8 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { AuthContext } from './AuthContext'; // Ensure the path is correct
+import { AuthContext } from './AuthContext';
+import '../styles/SignUp.css'; // Import the CSS file
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -25,25 +26,32 @@ const SignUp = () => {
     }
   };
 
+  const goBack = () => {
+    navigate('/'); // Navigate back to the Home page
+  };
+
   return (
-    <form onSubmit={signUp}>
-      <input
-        type="email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        placeholder="Password"
-        required
-      />
-      <button type="submit">Sign Up</button>
-      {/* Consider adding user feedback elements here */}
-    </form>
+    <div className="sign-up-form">
+      <h2>Sign Up</h2>
+      <form onSubmit={signUp}>
+        <input
+          type="email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          placeholder="Email"
+          required
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Sign Up</button>
+        <button onClick={goBack} className="go-back-btn">Go Back</button> {/* Go Back button */}
+      </form>
+    </div>
   );
 };
 

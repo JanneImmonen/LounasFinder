@@ -9,10 +9,9 @@ const Dashboard = () => {
       <header className="dashboard-header">
         <h1>Dashboard</h1>
         <nav className="dashboard-nav">
-          <Link to="/profile">Profile</Link>
-          <Link to="/settings">Settings</Link>
           <Link to="/map">Map</Link>
           <Link to="/recipes">Recipes</Link>
+          <Link to="/signout">Sign Out</Link> {/* Added Sign Out link */}
         </nav>
       </header>
       <main className="dashboard-main">

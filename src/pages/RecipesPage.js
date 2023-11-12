@@ -1,14 +1,16 @@
 // src/pages/RecipesPage.js
 import React from 'react';
+import Navigation from '../components/Navigation';
+import '../styles/PageStyles.css'; // Import the new CSS file
 
 const RecipesPage = () => {
-  return (
-    <div>
-      <h1>Recipes Page</h1>
-      {/* Update the href to point directly to recipes.html */}
-      <p>Access recipes <a href="/recipes.html" target="_blank" rel="noopener noreferrer">here</a>.</p>
-    </div>
-  );
+    return (
+        <div className="page-container">
+            <Navigation />
+            <h1 className="page-title">Recipes Page</h1>
+            <p><a href="/recipes.html" target="_blank" rel="noopener noreferrer" className="page-link">Access recipes here</a></p>
+        </div>
+    );
 };
 
 export default RecipesPage;
