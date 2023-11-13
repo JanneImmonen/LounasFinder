@@ -67,7 +67,7 @@ npm run build
 We welcome contributions to the LounasFinder project. Please read our contributing guidelines for more information on how you can contribute.
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://mit-license.org/).
 
 ## Acknowledgments
 ©Janne Immonen 2023 - TO00BS67-3003
