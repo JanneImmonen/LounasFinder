@@ -70,4 +70,4 @@ We welcome contributions to the LounasFinder project. Please read our contributi
 This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
-Special thanks to all contributors and supporters of the LounasFinder project.
+©Janne Immonen 2023 - TO00BS67-3003
