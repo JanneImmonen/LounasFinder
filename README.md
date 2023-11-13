@@ -63,9 +63,6 @@ To build the application for production, run:
 ```bash
 npm run build
 ```
-## Contributing
-We welcome contributions to the LounasFinder project. Please read our contributing guidelines for more information on how you can contribute.
-
 ## License
 This project is licensed under the [MIT License](https://mit-license.org/).
 
