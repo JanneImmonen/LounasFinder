@@ -8,8 +8,8 @@ const RecipesPage = () => {
     const [categories, setCategories] = useState([]);
     const [filter, setFilter] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('');
-    const [setIsLoading] = useState(false);
-    const [setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false); // Corrected
+    const [error, setError] = useState(null); // Corrected
 
     const fetchAreas = async () => {
         // Implement fetch logic for areas
@@ -75,7 +75,10 @@ const RecipesPage = () => {
             <Navigation />
             <h1 className="page-title">Recipes Page</h1>
             <p>Discover a world of flavors with our diverse collection of recipes. Choose a region or category to find your next culinary adventure!</p>
-            
+            {/* Display loading message */}
+            {isLoading && <p>Loading...</p>}
+            {/* Display error message */}
+            {error && <p>Error: {error}</p>}
             {/* Area Filter Dropdown */}
             <select className="select-dropdown" onChange={handleAreaFilterChange} value={filter}>
                 <option value="">Select Area</option>

@@ -23,7 +23,7 @@ This project is built using several cutting-edge technologies and frameworks:
 ### Cloning the Repository
 To get started with LounasFinder, clone the repository to your local machine:
 ```bash
-git clone https://github.com/your-username/LounasFinder.git
+git clone https://github.com/JanneImmonen/LounasFinder.git
 cd LounasFinder
 ```
 ### Installing Dependencies
@@ -63,11 +63,8 @@ To build the application for production, run:
 ```bash
 npm run build
 ```
-## Contributing
-We welcome contributions to the LounasFinder project. Please read our contributing guidelines for more information on how you can contribute.
-
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://mit-license.org/).
 
 ## Acknowledgments
-Special thanks to all contributors and supporters of the LounasFinder project.
+©Janne Immonen 2023 - TO00BS67-3003
