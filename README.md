@@ -23,7 +23,7 @@ This project is built using several cutting-edge technologies and frameworks:
 ### Cloning the Repository
 To get started with LounasFinder, clone the repository to your local machine:
 ```bash
-git clone https://github.com/your-username/LounasFinder.git
+git clone https://github.com/JanneImmonen/LounasFinder.git
 cd LounasFinder
 ```
 ### Installing Dependencies
